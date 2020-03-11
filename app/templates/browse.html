@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Browse Puzzles{% endblock %}
+
+{% block content %}
+    <head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+   <script type=text/javascript src="{{  url_for('static', filename='table.js') }}"></script>
+   <link rel="stylesheet" href="{{ url_for('static',filename='styles/table_styles.css') }}">
+    </head>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Puzzle</th>
+            <th>Difficulty</th>
+            <th>Solve</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for puzzle, difficulty in puzzles %}
+        <tr>
+        <td>
+           <table id="puzzle">
+              {% for puzzle_row in puzzle | batch(9, '&nbsp;') %}
+                <tr>
+                {% for column in puzzle_row %}
+                  <td>{{ column }}</td>
+                {% endfor %}
+                </tr>
+              {% endfor %}
+          </table>
+      </td>
+        <td><span> {{difficulty|title}} </span></td>
+        <td><form id="package_form" action="" method="post">
+            <div class="panel-body">
+            <button class="btn btn-info" name="action" value={{puzzle}} type="submit">Solve</button>
+            </div>
+        </form></td>
+        </tr>
+        {% endfor %}
+</tbody>
+</table>
+{% endblock %}

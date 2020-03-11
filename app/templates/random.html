@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Random puzzle{% endblock %}
+
+{% block content %}
+    <h1>Choose your input options</h1>
+    <a href={{url_for('custom')}} class="btn btn-info" role="button">Enter a custom puzzle</a>
+    <a href={{url_for('random')}} class="btn btn-info" role="button">Generate a random puzzle</a>
+    <a href={{url_for('browse')}} class="btn btn-info" role="button">Browse all puzzles</a>
+{% endblock %}

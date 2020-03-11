@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Online Sudoku Solver{% endblock %}
+{% block content %}
+<h1>Choose your input option</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <a href={{url_for('custom')}} class="btn btn-info" role="button">Enter a custom puzzle</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <a href={{url_for('random')}} class="btn btn-primary" role="button">Generate a random puzzle</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <a href={{url_for('browse')}} class="btn btn-dark" role="button">Browse puzzle</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

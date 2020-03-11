@@ -1,0 +1,24 @@
+td {
+  height:30px;
+  width:30px;
+  border:1px solid;
+  text-align:center;
+}
+td:first-child {
+  border-left:solid;
+}
+td:nth-child(3n) {
+  border-right:solid ;
+}
+td:nth-child(3n+1) {
+  border-left:solid ;
+}
+tr:first-child td{
+  border-top:solid;
+}
+tr:nth-child(3n) td{
+  border-bottom:solid;
+}
+tr:nth-child(3n+1) td{
+  border-top:solid;
+}

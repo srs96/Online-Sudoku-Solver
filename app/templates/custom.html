@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Custom Puzzle{% endblock %}
+
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/table_styles.css') }}">
+    </head>
+        <h1>Enter unsolved sudoku</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    Fill up grid
+                </div>
+            </div>
+             <div class="row">
+                <div class="col">
+            <form action="" method="post" novalidate>
+                <div class="form-group">
+                {{form_grid.hidden_tag() }}
+                  <table class="table">
+                    <tbody>
+                    {% for puzzle_row in form_grid.square | batch(9, '&nbsp;') %}
+                    <tr>
+                        <th scope="row"></th>
+                        {% for column in puzzle_row %}
+                        <td>{{ column(size=1)  }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        <div class="row">
+            <div class="col">
+                <p>{{ form_grid.submit() }}</p>
+            </div>
+        </div>
+            </form>
+            <div class="row">
+                <div class="col">
+    <a href={{url_for('index')}} class="btn btn-info" role="button">Go to homepage</a>
+</div>
+</div>
+</div>
+{% endblock %}

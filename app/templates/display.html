@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{title_name}}{% endblock %}
+
+
+  {% block content %}
+      <head>
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/table_styles.css') }}">
+    </head>
+      <h1> {{sudoku_title}}</h1>
+      {% if puzzle %}
+            <table class="puzzle">
+              {% for puzzle_row in puzzle | batch(9, '&nbsp;') %}
+                <tr>
+                {% for column in puzzle_row %}
+                  <td>{{ column }}</td>
+                {% endfor %}
+                </tr>
+              {% endfor %}
+          </table>
+      {% else %}
+          Invalid Sudoku
+      {% endif %}
+
+      <a href={{redirect_link}} class="btn btn-info" role="button">{{button_text}}</a>
+      {% endblock %}
+
+
